@@ -30,6 +30,7 @@
     "html-webpack-plugin": "^2.26.0",
     "lodash": "^4.17.4",
     "mongoose": "^4.7.8",
+    "nodemon": "^1.11.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "react": "^15.4.2",
