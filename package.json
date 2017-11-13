@@ -12,6 +12,9 @@
   },
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.11.0",
+  },
   "dependencies": {
     "apollo-client": "^0.8.2",
     "axios": "^0.15.3",
