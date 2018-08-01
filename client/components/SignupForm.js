@@ -12,10 +12,16 @@ class SignupForm extends Component {
 		this.state = { errors: [] }
 	}
 
+	componentWillUpdate(nextProps){
+		if(!this.props.data.user && nextProps.data.user) {
+			hashHistory.push('/dashboard');
+		}
+	}
+
 	onSubmit({ email, password }){
 		this.props.mutate({
 			variables: { email, password },
-			refetchQueryes: [{ query }]
+			refetchQueries: [{ query }]
 		})
 		.catch(res => {
 			const errors = res.graphQLErrors.map(error => error.message)
@@ -28,10 +34,14 @@ class SignupForm extends Component {
 			<div>
 				<Header/>
 				<h3>Sign Up</h3>
-				<AuthForm errors={ this.state.errors && this.state.errors.length ? this.state.errors : [] } onSubmit={ this.onSubmit.bind(this) }/>
+				<AuthForm 
+					errors={ this.state.errors && this.state.errors.length ? this.state.errors : [] } 
+					onSubmit={ this.onSubmit.bind(this) }/>
 			</div>
 		)
 	}
 }
 
-export default graphql(mutation)(SignupForm);
+export default graphql(query)(
+	graphql(mutation)(SignupForm)
+);
