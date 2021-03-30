@@ -6,7 +6,6 @@ const session = require('express-session');
 const passport = require('passport');
 const passportConfig = require('./services/auth');
 const MongoStore = require('connect-mongo')(session);
-// const MongoStore = require('connect-mongo').default;
 const schema = require('./schema/schema');
 
 const keys = require('./config/keys');
@@ -41,15 +40,6 @@ app.use(session({
     autoReconnect: true
   })
 }));
-// app.use(session({
-//     resave: true,
-//     saveUninitialized: true,
-//     secret: 'aaabbbccc',
-//     store: MongoStore.create({
-//         mongoUrl: MONGO_URI,
-//         autoReconnect: true
-//     })
-// }));
 
 
 
